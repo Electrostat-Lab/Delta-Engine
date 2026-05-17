@@ -7,8 +7,10 @@ Scientific abstractions are one of the very useful techniques to implement softw
 Embedded Systems - Embedded IO - C Programming Framework - Calculus-based Physics - Multivariate Calculus - Software programming paradigms
 
 ## Knowledge Gaps
-There are a couple of knowledge gaps that this software is going to address including, but not limited to:
-- [ ] Controlling IO using Scientific Abstractions (e.g., Mathematical/Physical and Chemical Abstractions).
+There are a couple of theoretical and practical knowledge gaps that this software is going to address including, but not limited to:
+- [ ] Precisional IO Embedded Control of heavy machines and robotics using Scientific Abstractions (e.g., Mathematical/Physical and Chemical Abstractions).
+- [ ] Seamless hardware implementation of several physics simulation systems.
+- [ ] Single abstraction for software and hardware systems.
 
 ## Introduction
 Delta-Engine is a physics engine that provides a new software architectural paradigm for precisional IO switch and control over embedded systems and robotics without much knowledge in embedded systems, managing states and software engineering paradigms or if they fail to design the system (e.g., Object-oriented programming). It introduces the field of computational physics to the embedded world through providing a virtual machine and a runtime infrastructure based on the Newtonian physics spaces and supporting infrastructure IO libraries for several supported platforms.
