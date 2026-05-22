@@ -1,0 +1,287 @@
+digraph newtonian_rti {
+    subgraph cluster_engine {
+        fontname="Helvetica"
+        fontcolor="#CECBF6"
+        style="rounded,filled"
+        fillcolor="#8F8F8F"
+        color="#8F8F8F"
+        fontcolor="#FFFFFF"
+        fontsize=12
+        penwidth=1.2
+        margin=16
+
+        graph [
+            rankdir=TB
+            fontname="Helvetica"
+            fontsize=20
+            bgcolor="transparent"
+            pad=0.5
+            nodesep=0.3
+            ranksep=0.25
+            label="Δ-Engine Architecture (GPLv3)"
+            labelloc=t
+            labeljust=c
+            splines=false
+            compound=true
+        ]
+        node [
+            fontname="Helvetica"
+            shape=box
+            style="rounded,filled"
+            penwidth=0.8
+            width=5.5
+            margin="0.25,0.18"
+        ]
+        edge [
+            fontname="Helvetica"
+            fontsize=10
+            arrowhead=vee
+            arrowsize=0.7
+            penwidth=0.8
+            color="#9C9A92"
+        ]
+        
+        
+        // ── Newtonian RII — Amber ─────────────────────────────────────────────
+        subgraph cluster_rti {
+            label="[0]  Newtonian RTI — Physics Spaces\nTop-level simulation environment and scene API"
+            fontname="Helvetica"
+            fontcolor="#CECBF6"
+            style="rounded,filled"
+            fillcolor="#633806"
+            color="#EF9F27"
+            fontcolor="#FFFFFF"
+            fontsize=12
+            penwidth=1.2
+            margin=16
+    
+            node [
+                fontname="Helvetica"
+                fontsize=11
+                shape=box
+                style="rounded,filled"
+                fillcolor="#733806"
+                color="#733806"
+                fontcolor="#FFFFFF"
+                penwidth=0.8
+                width=1.0
+                margin="0.18,0.14"
+            ]
+    
+            _inertia  [ label="Inertial Reference Frames" ]
+            _forceacc [ label="Accelerating Component" ]
+            _interaction [ label="Interaction Component" ]
+    
+            { rank=same _inertia _forceacc _interaction }
+    
+            // invisible edges to enforce left-to-right ordering
+            _inertia -> _forceacc -> _interaction [ style=invis ]
+        }
+    
+        // ── Physics Mechanics cluster ─────────────────────────────────────────
+        subgraph cluster_physics {
+            label="[1]  Physics Mechanics Modules"
+            fontname="Helvetica"
+            fontsize=12
+            fontcolor="#FFFFFF"
+            style="rounded,filled"
+            fillcolor="#3C3489"
+            color="#AFA9EC"
+            penwidth=1.2
+            margin=16
+    
+            node [
+                fontname="Helvetica"
+                fontsize=11
+                shape=box
+                style="rounded,filled"
+                fillcolor="#26215C"
+                color="#26215C"
+                fontcolor="#FFFFFF"
+                penwidth=0.8
+                width=1.0
+                margin="0.18,0.14"
+            ]
+    
+            PM_mech  [ label="Mechanics" ]
+            PM_fluid [ label="Fluid Dynamics" ]
+            PM_therm [ label="Thermodynamics" ]
+            PM_em    [ label="Electromagnetism" ]
+    
+            { rank=same PM_mech PM_fluid PM_therm PM_em }
+    
+            // invisible edges to enforce left-to-right ordering
+            PM_mech -> PM_fluid -> PM_therm -> PM_em [ style=invis ]
+        }
+        
+        subgraph cluster_sdk {
+            label="The Electrostatic-Sandbox SDK (GPLv3)"
+            fontname="Helvetica"
+            fontcolor="#CECBF6"
+            style="rounded,filled"
+            fillcolor="#000000"
+            color="#000000"
+            fontcolor="#FFFFFF"
+            fontsize=12
+            penwidth=1.2
+            margin=16
+            // ── Mathematical Libraries — Blue ─────────────────────────────────────
+            subgraph cluster_mathlibs {
+                label="[2]  Mathematical Libraries"
+                fontname="Helvetica"
+                fontsize=12
+                fontcolor="#CECBF6"
+                style="rounded,filled"
+                fillcolor="#0C447C"
+                color="#85B7EB"
+                fontcolor="#FFFFFF"
+                penwidth=1.2
+                margin=16
+        
+                node [
+                    fontname="Helvetica"
+                    fontsize=11
+                    shape=box
+                    style="rounded,filled"
+                    fillcolor="#26215C"
+                    color="#26215C"
+                    fontcolor="#FFFFFF"
+                    penwidth=0.8
+                    width=1.0
+                    margin="0.18,0.14"
+                ]
+        
+                _vectors  [ label="Vector Math" ]
+                _calculus [ label="Calculus" ]
+                _matrix [ label="Matrix Algebra" ]
+        
+                { rank=same _vectors _calculus _matrix }
+        
+                // invisible edges to enforce left-to-right ordering
+                _vectors -> _calculus -> _matrix [ style=invis ]
+            }
+            
+            // ── IO VM — Teal ──────────────────────────────────────────────────────
+            
+            subgraph cluster_vmio {
+                label="[3]  IO VM  (VMIO)\nVirtualised IO interface — platform-agnostic dispatch"
+                fontname="Helvetica"
+                fontsize=12
+                fontcolor="#CECBF6"
+                style="rounded,filled"
+                fillcolor="#085041"
+                color="#5DCAA5"
+                fontcolor="#FFFFFF"
+                penwidth=1.2
+                margin=16
+        
+                node [
+                    fontname="Helvetica"
+                    fontsize=11
+                    shape=box
+                    style="rounded,filled"
+                    fillcolor="#115022"
+                    color="#115022"
+                    fontcolor="#FFFFFF"
+                    penwidth=0.8
+                    width=1.0
+                    margin="0.18,0.14"
+                ]
+        
+                _analog  [ label="Analog Driver" ]
+                _digital [ label="Digital Driver" ]
+                _comm [ label="Comm Driver" ]
+                _memory [ label="Memory Driver" ]
+        
+                { rank=same _analog _digital _comm _memory }
+        
+                // invisible edges to enforce left-to-right ordering
+                _analog -> _digital -> _comm -> _memory [ style=invis ]
+            }
+        
+            // ── IO Infrastructure — Coral ─────────────────────────────────────────
+            
+            subgraph cluster_io {
+                label="[4]  IO Infrastructure"
+                fontname="Helvetica"
+                fontsize=12
+                fontcolor="#CECBF6"
+                style="rounded,filled"
+                fillcolor="#712B13"
+                color="#F0997B"
+                fontcolor="#FFFFFF"
+                penwidth=1.2
+                margin=16
+        
+                node [
+                    fontname="Helvetica"
+                    fontsize=11
+                    shape=box
+                    style="rounded,filled"
+                    fillcolor="#912B13"
+                    color="#912B13"
+                    fontcolor="#FFFFFF"
+                    penwidth=0.8
+                    width=1.0
+                    margin="0.18,0.14"
+                ]
+        
+                _gpio  [ label="GPIO" ]
+                _spi [ label="SPI" ]
+                _i2c [ label="I2C" ]
+                _pwm [ label="PWM" ]
+                _adc [ label="ADC" ]
+                _eeprom [ label="EEPROM" ]
+        
+                { rank=same _gpio _spi _i2c _pwm _adc _eeprom  }
+        
+                // invisible edges to enforce left-to-right ordering
+                _gpio -> _spi -> _i2c -> _pwm -> _adc -> _eeprom [ style=invis ]
+            }
+        }
+    
+        // ── Platform targets — Gray ───────────────────────────────────────────
+        subgraph cluster_toolchain {
+            label="[5]  Platform-dependent Toolchain"
+            fontname="Helvetica"
+            fontsize=12
+            fontcolor="#CECBF6"
+            style="rounded,filled"
+            fillcolor="#444441"
+            color="#B4B2A9"
+            fontcolor="#FFFFFF"
+            penwidth=1.2
+            margin=16
+    
+            node [
+                fontname="Helvetica"
+                fontsize=11
+                shape=box
+                style="rounded,filled"
+                fillcolor="#545451"
+                color="#B4B2A9"
+                fontcolor="#FFFFFF"
+                penwidth=0.8
+                width=1.0
+                margin="0.18,0.14"
+            ]
+    
+            _avr  [ label="AVR" ]
+            _arm [ label="ARM" ]
+            _x86 [ label="x86" ]
+            _android [ label="Android" ]
+    
+            { rank=same _avr _arm _x86 _android }
+    
+            // invisible edges to enforce left-to-right ordering
+            _avr -> _arm -> _x86 -> _android [ style=invis ]
+        }
+    
+        // ── Spine edges ───────────────────────────────────────────────────────
+        _interaction     -> PM_em  [style=invis] [ lhead=cluster_physics ]
+        PM_em -> _matrix     [style=invis] [ ltail=cluster_physics ]
+        _matrix     -> _memory [style=invis]
+        _memory     -> _eeprom [style=invis]
+        _eeprom     -> _android [style=invis]
+    }   
+}
