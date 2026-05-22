@@ -21,6 +21,8 @@ Delta-Engine is a physics engine that provides a new software architectural para
 - Implementation of several physics spaces modules (e.g., Kinematics Module - Fluid Mechanics Module).
 
 ## High-level Architecture
+<img width="773" height="904" alt="architecture" src="https://github.com/user-attachments/assets/d5700f97-d21c-42fb-9279-818225b125d4" />
+
 
 ## Implementation Phases and Milestones
 
