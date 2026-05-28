@@ -19,6 +19,8 @@ Delta-Engine is a physics engine that provides a new software architectural para
 - Virtualization of physics objects and IO emulation using mathematical and physical abstractions.
 - Newtonian physics spaces as Runtime Infrastructure (RTI).
 - Implementation of several physics spaces modules (e.g., Kinematics Module - Fluid Mechanics Module).
+- Implementation methodologies involve using **Entity-Component-System (ECS)** to implement the structure of the physics engine together with **Automata Theory**; such that, each component of the physics architecture could be represented by a system of component objects.
+
 
 ## High-level Architecture
 <img width="773" height="904" alt="architecture" src="https://github.com/user-attachments/assets/d5700f97-d21c-42fb-9279-818225b125d4" />
@@ -58,7 +60,24 @@ Two architectural models are being proposed here; a **hierarchial model** repres
     * Android Userspace Runtime.
     * AVR Runtime.
     * ARM Runtime.
-    * x86 Userspace Runtime. 
+    * x86 Userspace Runtime.
+
+### Detailed Design:
+Detailed design could be carried out using the **Entity-Component System (ECS) Framework** to model the structure of the engine, and the **Automata Theory** to model the behavior of the engine. Both could be linked via the system part of the ECS; ECS systems can be state machines; either deterministic or non-deterministic; cyclic or non-cyclic in runtime behavior.
+ 
+> [!NOTE]
+> ## Example:
+> A physics object; a ball; has the following:
+> (1) A component that is attached to the **Inertial Ref. Frame System** through an entity `ID_BALL`.
+> (2) A component that is attached to the **Acceleration/Deceleration System** through an entity `ID_BALL`.
+> (3) A component that is attached to the **Molecular System** through an entity `ID_BALL`.
+> (4) A component that is attached to the **Interaction System** through an entity `ID_BALL`.
+> (5) A component that is attached to the **Mechanics System** through an entity `ID_BALL`.
+> 
+> ## Remarks:
+> * It's not ideal to add the ball object to the **Fluid Dynamics System**; therefore, both the **Mechanics** and the **Fluid Dynamics** are specializations of the **Atomic/Newtonian RTI Subsystem**.
+> * The collection of the previous systems represent the core of the Delta-Engine; the **Atomic/Newtonian RTI Subsystem**.
+> * Systems are operated using State-Machines; either deterministic or non-deterministic in nature; cyclic or non-cyclic. 
 
 ## Implementation Phases and Milestones
 
