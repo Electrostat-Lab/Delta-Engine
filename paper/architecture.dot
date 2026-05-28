@@ -44,7 +44,7 @@ digraph newtonian_rti {
         
         // ── Newtonian RII — Amber ─────────────────────────────────────────────
         subgraph cluster_rti {
-            label="[0]  Newtonian RTI — Physics Spaces\nTop-level simulation environment and scene API"
+            label="[0]  Atomic Newtonian RTI — Physics Spaces\nTop-level simulation environment and scene API"
             fontname="Helvetica"
             fontcolor="#CECBF6"
             style="rounded,filled"
@@ -67,15 +67,16 @@ digraph newtonian_rti {
                 width=1.0
                 margin="0.18,0.14"
             ]
-    
-            _inertia  [ label="Inertial Reference Frames" ]
+            
+            _molecular [ label="Molecular Component" ]
+            _inertia  [ label="Inertial Ref. Frames Component" ]
             _forceacc [ label="Accelerating Component" ]
             _interaction [ label="Interaction Component" ]
     
-            { rank=same _inertia _forceacc _interaction }
+            { rank=same _molecular _inertia _forceacc _interaction }
     
             // invisible edges to enforce left-to-right ordering
-            _inertia -> _forceacc -> _interaction [ style=invis ]
+            _molecular -> _inertia -> _forceacc -> _interaction [ style=invis ]
         }
     
         // ── Physics Mechanics cluster ─────────────────────────────────────────
