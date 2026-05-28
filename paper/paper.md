@@ -68,11 +68,11 @@ Detailed design could be carried out using the **Entity-Component System (ECS) F
 > [!NOTE]
 > ## Example:
 > A physics object; a ball; has the following:
-> (1) A component that is attached to the **Inertial Ref. Frame System** through an entity `ID_BALL`.
-> (2) A component that is attached to the **Acceleration/Deceleration System** through an entity `ID_BALL`.
-> (3) A component that is attached to the **Molecular System** through an entity `ID_BALL`.
-> (4) A component that is attached to the **Interaction System** through an entity `ID_BALL`.
-> (5) A component that is attached to the **Mechanics System** through an entity `ID_BALL`.
+> 1) A component that is attached to the **Inertial Ref. Frame System** through an entity `ID_BALL`.
+> 2) A component that is attached to the **Acceleration/Deceleration System** through an entity `ID_BALL`.
+> 3) A component that is attached to the **Molecular System** through an entity `ID_BALL`.
+> 4) A component that is attached to the **Interaction System** through an entity `ID_BALL`.
+> 5) A component that is attached to the **Mechanics System** through an entity `ID_BALL`.
 > 
 > ## Remarks:
 > * It's not ideal to add the ball object to the **Fluid Dynamics System**; therefore, both the **Mechanics** and the **Fluid Dynamics** are specializations of the **Atomic/Newtonian RTI Subsystem**.
