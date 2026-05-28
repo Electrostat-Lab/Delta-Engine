@@ -16,11 +16,11 @@ There are a couple of theoretical and practical knowledge gaps that this softwar
 Delta-Engine is a physics engine that provides a new software architectural paradigm for precisional IO switch and control over embedded systems and robotics without much knowledge in embedded systems, managing states and software engineering paradigms or if they fail to design the system (e.g., Object-oriented programming). It introduces the field of computational physics to the embedded world through providing a virtual machine and a runtime infrastructure based on the Newtonian physics spaces and supporting infrastructure IO libraries for several supported platforms.
 
 ## Methodologies
+- The Abstract architectural design methodologies involve using the **Hardware-Abstraction Layer (HAL)** to model the structure of the engine in a hierarchial form and the **System-Entity-Structure/Model-Base (SES/MB) Framework** to model the structure of the engine in a more detailed form and model the relation among the subsystems and the components of the engine.
+- The Detailed-design methodologies involve using **Entity-Component-System (ECS)** to implement the structure of the physics engine together with the **Automata Theory**; such that, each component of the physics architecture could be represented by a system of component objects.
 - Virtualization of physics objects and IO emulation using mathematical and physical abstractions.
 - Newtonian physics spaces as Runtime Infrastructure (RTI).
 - Implementation of several physics spaces modules (e.g., Kinematics Module - Fluid Mechanics Module).
-- Implementation methodologies involve using **Entity-Component-System (ECS)** to implement the structure of the physics engine together with **Automata Theory**; such that, each component of the physics architecture could be represented by a system of component objects.
-
 
 ## High-level Architecture
 <img width="773" height="904" alt="architecture" src="https://github.com/user-attachments/assets/d5700f97-d21c-42fb-9279-818225b125d4" />
