@@ -17,7 +17,7 @@ Delta-Engine is a physics engine that provides a new software architectural para
 
 ## Methodologies
 - The Abstract architectural design methodologies involve using the **Hardware-Abstraction Layer (HAL)** to model the structure of the engine in a hierarchial form and the **System-Entity-Structure/Model-Base (SES/MB) Framework** to model the structure of the engine in a more detailed form and model the relation among the subsystems and the components of the engine.
-- The Detailed-design methodologies involve using **Entity-Component-System (ECS)** to implement the structure of the physics engine together with the **Automata Theory**; such that, each component of the physics architecture could be represented by a system of component objects.
+- The Detailed-design methodologies involve using **Entity-Component-System (ECS)** to implement the structure of the physics engine together with the **Automata Theory**; such that, each component of the physics architecture could be represented by a system of component objects, and the system part of the ECS encapsulates state-machines; either deterministic or non-deterministic; with cyclic or non-cyclic runtime.
 - Virtualization of physics objects and IO emulation using mathematical and physical abstractions.
 - Newtonian physics spaces as Runtime Infrastructure (RTI).
 - Implementation of several physics spaces modules (e.g., Kinematics Module - Fluid Mechanics Module).
