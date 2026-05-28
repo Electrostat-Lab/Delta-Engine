@@ -6,7 +6,7 @@ Scientific abstractions are one of the very useful techniques to implement softw
 ## Keywords
 Embedded Systems - Embedded IO - C Programming Framework - Calculus-based Physics - Multivariate Calculus - Software programming paradigms
 
-## Knowledge Gaps
+## Knowledge Gaps (Statement of Need)
 There are a couple of theoretical and practical knowledge gaps that this software is going to address including, but not limited to:
 - [ ] Precisional IO Embedded Control of heavy machines and robotics using Scientific Abstractions (e.g., Mathematical/Physical and Chemical Abstractions).
 - [ ] Seamless hardware implementation of several physics simulation systems.
