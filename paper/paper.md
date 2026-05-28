@@ -38,10 +38,27 @@ Two architectural models are being proposed here; a **hierarchial model** repres
     * Fluid Dynamics Module.
     * Thermodynamics Module.
     * Electromagnetism Module.
-* Mathematical Libraries.
-* VMIO.
-* IO Infrastructure.
-* Platform-dependent toolchain.
+* Mathematical Libraries: a subsystem housing the base continous and discrete mathematical layer of the operations involved in the Physics Subsystems (both the Atomic/Newtonian RTI and the Physics Mechanics Subsystems).
+    * Calculus Module.
+    * VectorMath Module.
+    * Matrix Algebra Module. 
+* Virtualized IO (VMIO): a subsystem involving a platform-independent layer of driver modules to operate on the lower level platform-dependent IO infrastructure based on the output data from the Mathematical/Physical layers.
+    * Analog Driver Module.
+    * Digital Driver Module.
+    * Comm Driver Module.
+    * Memory Driver Module.
+* IO Infrastructure: a subsystem involving a more platform specific dependent layer of the hardware IO; grouped together in a thin abstraction layer that encapsulates a procedural runtime for the hardware IO involved; links statically with **the Platform-dependent toolchain**.
+    * GPIO Module.
+    * PWM Module.
+    * UART Module.
+    * SPI Module.
+    * I2C Module.
+    * EEPROM Module. 
+* Platform-dependent toolchain: a subsystem involving a platform-dependent layer of the hardware IO and the operating system operations that are encapsulated directly by the IO Infrastructure subsystem and indirectly by the Platform-agnostic VMIO subsystem.
+    * Android Userspace Runtime.
+    * AVR Runtime.
+    * ARM Runtime.
+    * x86 Userspace Runtime. 
 
 ## Implementation Phases and Milestones
 
