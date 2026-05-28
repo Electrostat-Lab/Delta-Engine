@@ -30,4 +30,8 @@ Delta-Engine is a physics engine that provides a new software architectural para
 
 ## Integration Phases and Life Applications
 
-## Future vision and startups
+## References
+- [SES/MB Framework by Throsten Pawletta](https://dl.acm.org/doi/10.5555/3108244.3108245)
+- [The Feynman Lectures Caltech University](https://www.feynmanlectures.caltech.edu/)
+- [Fundamentals of Physics for Scientists and Engineers by Paul Tipler]()
+- [Thomas' Calculus]()
