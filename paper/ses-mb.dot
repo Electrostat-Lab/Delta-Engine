@@ -43,7 +43,7 @@ digraph ses {
 
         // ── [0] Newtonian RTI ─────────────────────────────────────────────
         subgraph cluster_rti {
-            label="[0]  Newtonian RTI\nPhysics spaces"
+            label="[0]  Atomic Newtonian RTI\nPhysics spaces"
             fontname="Helvetica"
             fontsize=11
             fontcolor="#FFFFFF"
@@ -63,15 +63,17 @@ digraph ses {
             ]
 
             node [ fillcolor="#085041" color="#5DCAA5" fontcolor="#9FE1CB" fontsize=10 width=0.9 ]
+            MOL  [ label="Molecular\nComponent" ]
             IRF  [ label="Inertial\nRef. Frame" ]
             ACC  [ label="Accel.\nComponent" ]
             INT  [ label="Interact.\nComponent" ]
 
             { rank=IRF ACC INT }
-            IRF -> ACC -> INT [ style=invis ]
+            MOL -> IRF -> ACC -> INT [ style=invis ]
             EN_rti -> IRF [ style=dashed color="#AFA9EC" arrowhead=none penwidth=0.6 ]
             EN_rti -> ACC [ style=dashed color="#AFA9EC" arrowhead=none penwidth=0.6 ]
             EN_rti -> INT [ style=dashed color="#AFA9EC" arrowhead=none penwidth=0.6 ]
+            EN_rti -> MOL [ style=dashed color="#AFA9EC" arrowhead=none penwidth=0.6 ]
 
             // ── [1] Physics Mechanics — specialization of EN_rti ─────────
             subgraph cluster_physics {
