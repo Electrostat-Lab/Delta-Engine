@@ -25,6 +25,23 @@ Delta-Engine is a physics engine that provides a new software architectural para
 
 <img width="1662" height="1301" alt="ses-mb" src="https://github.com/user-attachments/assets/51447f44-0fc4-4b15-9e33-3a40257c5764" />
 
+Two architectural models are being proposed here; a **hierarchial model** representing a hardware abstraction layer using a mathematical/physical abstraction, and a **System-Entity-Structure/Model-Base (SES/MB) model** to model the same system components into several subsytems; those subsystems display some components that may be formally linked with components from other subsystems (e.g., the formal linkage among Math Libraries, Mechanics Libraries, and the VMIO Libraries that enable a chained dispatch from Physics to IO).
+
+### Subsystems:
+* Atomic Newtonian RTI: a subsystem that groups the runtime infrastructure components; its instantiation reveals the base Newtonian physics of inertia, acceleration, and object interaction in space.
+    * Molecular Component.
+    * Inertial Ref. frame Component.
+    * Acceleration Component.
+    * Interaction Component.
+* Physics Mechanics: a specialized subsystem of the Newtonian RTI; grouping the different types of objects in the universe that experience inertia, acceleration/deceleration, and interaction with other objects.
+    * Mechanics Module.
+    * Fluid Dynamics Module.
+    * Thermodynamics Module.
+    * Electromagnetism Module.
+* Mathematical Libraries.
+* VMIO.
+* IO Infrastructure.
+* Platform-dependent toolchain.
 
 ## Implementation Phases and Milestones
 
