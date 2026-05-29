@@ -75,8 +75,11 @@ Detailed design could be carried out using the **Entity-Component System (ECS) F
 > 5) A component that is attached to the **Mechanics System** through an entity `ID_BALL`.
 > 
 > ## Remarks:
-> * It's not ideal to add the ball object to the **Fluid Dynamics System**; therefore, both the **Mechanics** and the **Fluid Dynamics** are specializations of the **Atomic/Newtonian RTI Subsystem**.
-> * The collection of the previous systems represent the core of the Delta-Engine; the **Atomic/Newtonian RTI Subsystem**.
+> * It's not ideal to add a component of the ball object to the **Fluid Dynamics System**; therefore, both the **Mechanics** and the **Fluid Dynamics** are specializations of the **Atomic/Newtonian RTI Subsystem**.
+> * It would be ideal to attach a component of the ball object to the **Fluid Dynamics System**, only if the ball is highly deformable and could be expressed in terms of fluid or semi-fluid properties (e.g., the ball is a "thrombus" in biomedical simulation).
+> * If that ball object is otherwise, a metallic object; it would be ideal to attach a component of it under the **Electromagnetism System**; as it could be electromagnetized under a magnetic field.
+> * A ball object could have { **a standard mechanical component**, **a deformable component**, and **a magnetizable component** } at the same time to enable the different types of simulations accordingly under their respective systems { **Mechanics System**, **Fluid Dynamics System**, and **Electromagnetism System**}, respectively.
+> * The collection of the previous systems represent the core of the Delta-Engine; the **Atomic/Newtonian RTI Subsystem** and its specialization **Physics Mechanics**.
 > * Systems are operated using State-Machines; either deterministic or non-deterministic in nature; cyclic or non-cyclic. 
 
 ## Implementation Phases and Milestones
