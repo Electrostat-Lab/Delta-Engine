@@ -4,7 +4,7 @@
 Scientific abstractions are one of the very useful techniques to implement software to control embedded microcontrollers for heavy machinery operations. In this paper, we introduce a physics engine that provides a new software paradigm for IO control for embedded systems and robotics based on a mathematical-physical abstraction.
 
 ## Keywords
-Embedded Systems - Embedded IO - C Programming Framework - Calculus-based Physics - Multivariate Calculus - Software programming paradigms
+Embedded Systems - Embedded IO - C Programming Framework - Calculus-based Physics - Multivariate Calculus - Software programming paradigms - System Entity Structure/Model Base (SES/MB) - Hardware Abstraction Layer (HAL) - Entity Component System (ECS) - Automata Theory
 
 ## Knowledge Gaps (Statement of Need)
 There are a couple of theoretical and practical knowledge gaps that this software is going to address including, but not limited to:
