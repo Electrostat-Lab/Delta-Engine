@@ -1,0 +1,374 @@
+digraph ses {
+    graph [
+        rankdir=TB
+        fontname="Helvetica"
+        fontsize=13
+        bgcolor="transparent"
+        pad=0.5
+        nodesep=0.4
+        ranksep=0.4
+        label="System Entity Structure (SES) — Δ-Engine Architecture (GPLv3)"
+        labelloc=t
+        labeljust=c
+        splines=false
+        compound=true
+    ]
+    node [
+        fontname="Helvetica"
+        shape=box
+        style="rounded,filled"
+        penwidth=0.8
+        margin="0.22,0.16"
+    ]
+    edge [
+        fontname="Helvetica"
+        fontsize=10
+        arrowhead=vee
+        arrowsize=0.7
+        penwidth=0.8
+        color="#9C9A92"
+    ]
+
+    // ── ROOT ────────────────────────────────────────────────────────────────
+    subgraph cluster_root {
+        label="Δ-Engine  ·  Root subsystem  ·  GPLv3"
+        fontname="Helvetica"
+        fontsize=13
+        fontcolor="#FFFFFF"
+        style="rounded,filled"
+        fillcolor="#444441"
+        color="#B4B2A9"
+        penwidth=1.4
+        margin=20
+
+        // ── [0] Newtonian RTI ─────────────────────────────────────────────
+        subgraph cluster_rti {
+            label="[0]  Atomic Newtonian RTI\nPhysics spaces"
+            fontname="Helvetica"
+            fontsize=11
+            fontcolor="#FFFFFF"
+            style="rounded,filled"
+            fillcolor="#633806"
+            color="#EF9F27"
+            penwidth=1.2
+            margin=14
+
+            EN_rti [
+                label="Physics spaces\n(entity node)"
+                fillcolor="#3C3489"
+                color="#AFA9EC"
+                fontcolor="#CECBF6"
+                fontsize=10
+                width=1.6
+            ]
+
+            node [ fillcolor="#085041" color="#5DCAA5" fontcolor="#9FE1CB" fontsize=10 width=0.9 ]
+            MOL  [ label="Molecular\nComponent" ]
+            IRF  [ label="Inertial\nRef. Frame" ]
+            ACC  [ label="Accel.\nComponent" ]
+            INT  [ label="Interact.\nComponent" ]
+
+            { rank=IRF ACC INT }
+            MOL -> IRF -> ACC -> INT [ style=invis ]
+            EN_rti -> IRF [ style=dashed color="#AFA9EC" arrowhead=none penwidth=0.6 ]
+            EN_rti -> ACC [ style=dashed color="#AFA9EC" arrowhead=none penwidth=0.6 ]
+            EN_rti -> INT [ style=dashed color="#AFA9EC" arrowhead=none penwidth=0.6 ]
+            EN_rti -> MOL [ style=dashed color="#AFA9EC" arrowhead=none penwidth=0.6 ]
+
+            // ── [1] Physics Mechanics — specialization of EN_rti ─────────
+            subgraph cluster_physics {
+                label="[1]  Physics Mechanics\n« specialization »  of  Physics spaces"
+                fontname="Helvetica"
+                fontsize=11
+                fontcolor="#FFFFFF"
+                style="rounded,filled"
+                fillcolor="#26215C"
+                color="#AFA9EC"
+                penwidth=1.4
+                margin=14
+
+                EN_phys [
+                    label="Mech. modules\n(specialization node)"
+                    fillcolor="#3C3489"
+                    color="#AFA9EC"
+                    fontcolor="#CECBF6"
+                    fontsize=10
+                    width=1.8
+                ]
+
+                node [ fillcolor="#085041" color="#5DCAA5" fontcolor="#9FE1CB" fontsize=10 width=0.9 ]
+                MCH  [ label="Solid Mechanics" ]
+                FLD  [ label="Fluid\nDynamics" ]
+                THM  [ label="Thermo-\ndynamics" ]
+                EM   [ label="Electro-\nmagnetism" ]
+
+                { rank=MCH FLD THM EM }
+                MCH -> FLD -> THM -> EM [ style=invis ]
+                EN_phys -> MCH [ style=dashed color="#AFA9EC" arrowhead=none penwidth=0.6 ]
+                EN_phys -> FLD [ style=dashed color="#AFA9EC" arrowhead=none penwidth=0.6 ]
+                EN_phys -> THM [ style=dashed color="#AFA9EC" arrowhead=none penwidth=0.6 ]
+                EN_phys -> EM  [ style=dashed color="#AFA9EC" arrowhead=none penwidth=0.6 ]
+            }
+        }
+
+        // specialization arc: diamond tail → vee head
+        EN_rti -> EN_phys [
+            label="« specialize »"
+            style=solid
+            arrowhead=normal
+            arrowtail=diamond
+            dir=both
+            color="#EF9F27"
+            fontcolor="#EF9F27"
+            fontsize=9
+            penwidth=1.2
+            lhead=cluster_physics
+        ]
+
+        // ── SDK ───────────────────────────────────────────────────────────
+        subgraph cluster_sdk {
+            label="Electrostatic-Sandbox SDK  ·  GPLv3"
+            fontname="Helvetica"
+            fontsize=12
+            fontcolor="#FFFFFF"
+            style="rounded,filled"
+            fillcolor="#2C2C2A"
+            color="#888780"
+            penwidth=1.4
+            margin=16
+
+            subgraph cluster_math {
+                label="[2]  Mathematical Libraries"
+                fontname="Helvetica"
+                fontsize=11
+                fontcolor="#FFFFFF"
+                style="rounded,filled"
+                fillcolor="#0C447C"
+                color="#85B7EB"
+                penwidth=1.2
+                margin=14
+
+                EN_math [
+                    label="Math ops\n(entity node)"
+                    fillcolor="#3C3489"
+                    color="#AFA9EC"
+                    fontcolor="#CECBF6"
+                    fontsize=10
+                    width=1.4
+                ]
+
+                node [ fillcolor="#085041" color="#5DCAA5" fontcolor="#9FE1CB" fontsize=10 width=0.9 ]
+                VEC  [ label="Vector\nMath" ]
+                CAL  [ label="Calculus" ]
+                MAT  [ label="Matrix\nAlgebra" ]
+
+                { rank=VEC CAL MAT }
+                VEC -> CAL -> MAT [ style=invis ]
+                EN_math -> VEC [ style=dashed color="#AFA9EC" arrowhead=none penwidth=0.6 ]
+                EN_math -> CAL [ style=dashed color="#AFA9EC" arrowhead=none penwidth=0.6 ]
+                EN_math -> MAT [ style=dashed color="#AFA9EC" arrowhead=none penwidth=0.6 ]
+            }
+
+            subgraph cluster_vmio {
+                label="[3]  IO VM  (VMIO)\nVirtualised IO — platform-agnostic dispatch"
+                fontname="Helvetica"
+                fontsize=11
+                fontcolor="#FFFFFF"
+                style="rounded,filled"
+                fillcolor="#085041"
+                color="#5DCAA5"
+                penwidth=1.2
+                margin=14
+
+                EN_vmio [
+                    label="IO drivers\n(entity node)"
+                    fillcolor="#3C3489"
+                    color="#AFA9EC"
+                    fontcolor="#CECBF6"
+                    fontsize=10
+                    width=1.4
+                ]
+
+                node [ fillcolor="#085041" color="#1D9E75" fontcolor="#9FE1CB" fontsize=10 width=0.9 ]
+                ANG  [ label="Analog\nDriver" ]
+                DIG  [ label="Digital\nDriver" ]
+                COM  [ label="Comm\nDriver" ]
+                MEM  [ label="Memory\nDriver" ]
+
+                { rank=ANG DIG COM MEM }
+                ANG -> DIG -> COM -> MEM [ style=invis ]
+                EN_vmio -> ANG [ style=dashed color="#AFA9EC" arrowhead=none penwidth=0.6 ]
+                EN_vmio -> DIG [ style=dashed color="#AFA9EC" arrowhead=none penwidth=0.6 ]
+                EN_vmio -> COM [ style=dashed color="#AFA9EC" arrowhead=none penwidth=0.6 ]
+                EN_vmio -> MEM [ style=dashed color="#AFA9EC" arrowhead=none penwidth=0.6 ]
+
+                // ── [4] IO Infrastructure — aspect of VMIO ─────────────
+                subgraph cluster_io {
+                    label="[4]  IO Infrastructure\n"
+                    fontname="Helvetica"
+                    fontsize=11
+                    fontcolor="#FFFFFF"
+                    style="rounded,filled"
+                    fillcolor="#712B13"
+                    color="#F0997B"
+                    penwidth=1.2
+                    margin=14
+
+                    EN_io [
+                        label="HW peripherals\n(entity node)"
+                        fillcolor="#3C3489"
+                        color="#AFA9EC"
+                        fontcolor="#CECBF6"
+                        fontsize=10
+                        width=1.6
+                    ]
+
+                    node [ fillcolor="#085041" color="#5DCAA5" fontcolor="#9FE1CB" fontsize=10 width=0.9 ]
+                    GPIO   [ label="GPIO" ]
+                    SPI    [ label="SPI" ]
+                    I2C    [ label="I2C" ]
+                    PWM    [ label="PWM" ]
+                    ADC    [ label="ADC" ]
+                    EEPROM [ label="EEPROM" ]
+
+                    { rank=GPIO SPI I2C PWM ADC EEPROM }
+                    GPIO -> SPI -> I2C -> PWM -> ADC -> EEPROM [ style=invis ]
+                    EN_io -> GPIO   [ style=dashed color="#AFA9EC" arrowhead=none penwidth=0.6 ]
+                    EN_io -> SPI    [ style=dashed color="#AFA9EC" arrowhead=none penwidth=0.6 ]
+                    EN_io -> I2C    [ style=dashed color="#AFA9EC" arrowhead=none penwidth=0.6 ]
+                    EN_io -> PWM    [ style=dashed color="#AFA9EC" arrowhead=none penwidth=0.6 ]
+                    EN_io -> ADC    [ style=dashed color="#AFA9EC" arrowhead=none penwidth=0.6 ]
+                    EN_io -> EEPROM [ style=dashed color="#AFA9EC" arrowhead=none penwidth=0.6 ]
+                }
+            }
+
+            EN_vmio -> EN_io [
+                label="« aspect-of »"
+                style=dashed
+                arrowhead=none
+                arrowtail=diamond
+                dir=both
+                color="#EF9F27"
+                fontcolor="#EF9F27"
+                fontsize=9
+                penwidth=1.2
+                lhead=cluster_physics
+            ]
+        }
+
+        // ── [5] Toolchain ─────────────────────────────────────────────────
+        subgraph cluster_toolchain {
+            label="[5]  Platform-dependent Toolchain"
+            fontname="Helvetica"
+            fontsize=11
+            fontcolor="#FFFFFF"
+            style="rounded,filled"
+            fillcolor="#444441"
+            color="#B4B2A9"
+            penwidth=1.2
+            margin=14
+
+            EN_tc [
+                label="Arch. targets\n(entity node)"
+                fillcolor="#3C3489"
+                color="#AFA9EC"
+                fontcolor="#CECBF6"
+                fontsize=10
+                width=1.4
+            ]
+
+            node [ fillcolor="#085041" color="#5DCAA5" fontcolor="#9FE1CB" fontsize=10 width=0.9 ]
+            AVR     [ label="AVR" ]
+            ARM     [ label="ARM" ]
+            X86     [ label="x86" ]
+            ANDROID [ label="Android" ]
+
+            { rank=same AVR ARM X86 ANDROID }
+            AVR -> ARM -> X86 -> ANDROID [ style=invis ]
+            EN_tc -> AVR     [ 
+                style=solid
+                arrowhead=normal
+                arrowtail=diamond
+                dir=both
+                color="#EF9F27"
+                fontcolor="#EF9F27"
+                fontsize=9
+                penwidth=1.2
+                lhead=cluster_physics
+            ]
+            EN_tc -> ARM     [ 
+                label="« specialize »"
+                style=solid
+                arrowhead=normal
+                arrowtail=diamond
+                dir=both
+                color="#EF9F27"
+                fontcolor="#EF9F27"
+                fontsize=9
+                penwidth=1.2
+                lhead=cluster_physics 
+            ]
+            EN_tc -> X86     [ 
+                style=solid
+                arrowhead=normal
+                arrowtail=diamond
+                dir=both
+                color="#EF9F27"
+                fontcolor="#EF9F27"
+                fontsize=9
+                penwidth=1.2
+                lhead=cluster_physics
+            ]
+            EN_tc -> ANDROID [ 
+                style=solid
+                arrowhead=normal
+                arrowtail=diamond
+                dir=both
+                color="#EF9F27"
+                fontcolor="#EF9F27"
+                fontsize=9
+                penwidth=1.2
+            ]
+        }
+
+        // Formal Linkage using Axioms among entities from different subsystems
+            EN_phys -> EN_math [
+                label="« axiomatic-formal linkage »"
+                style=dashed
+                arrowhead=diamond
+                arrowtail=diamond
+                dir=both
+                color="#EF9F27"
+                fontcolor="#EF9F27"
+                fontsize=9
+                penwidth=1.2
+                lhead=cluster_physics
+            ]
+            
+            EN_math -> EN_vmio [
+                label="« axiomatic-formal linkage »"
+                style=dashed
+                arrowhead=diamond
+                arrowtail=diamond
+                dir=both
+                color="#EF9F27"
+                fontcolor="#EF9F27"
+                fontsize=9
+                penwidth=1.2
+                lhead=cluster_physics
+            ]
+            
+            EN_tc -> EN_io [
+                label="« axiomatic-formal linkage »"
+                style=dashed
+                arrowhead=diamond
+                arrowtail=diamond
+                dir=both
+                color="#EF9F27"
+                fontcolor="#EF9F27"
+                fontsize=9
+                penwidth=1.2
+                lhead=cluster_physics
+            ]
+    }
+}
