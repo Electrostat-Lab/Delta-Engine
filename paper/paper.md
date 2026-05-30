@@ -88,6 +88,7 @@ Detailed design could be carried out using the **Entity-Component System (ECS) F
 > * This axiomatic linkage, described in the former bullet, is performed via a callback $$\zeta$$ function through the machines' transition functions $$\delta$$.
 
 ## References
+- [The Electrostatic-Sandbox SDK for distributed simulation systems](https://github.com/Electrostat-Lab/Electrostatic-Sandbox)
 - [SES/MB Framework by Throsten Pawletta](https://dl.acm.org/doi/10.5555/3108244.3108245)
 - [The Feynman Lectures Caltech University](https://www.feynmanlectures.caltech.edu/)
 - [Physics for Scientists and Engineers, 6th Edition](https://www.amazon.com/Physics-Scientists-Engineers-Paul-Tipler/dp/142920124X)
