@@ -26,9 +26,9 @@ Delta-Engine is a physics engine that provides a new software architectural para
 - Formal linkage among the automata involved and the hardware drivers layer via callback functions $$\zeta$$; dispatched with each state transition via the transition functions $$\delta$$.
 
 ## High-level Architecture
-<img width="773" height="904" alt="architecture" src="https://github.com/user-attachments/assets/d5700f97-d21c-42fb-9279-818225b125d4" />
+<img width="773" height="904" alt="architecture" src="https://electrostat-lab.github.io/Delta-Engine/architecture.svg" />
 
-<img width="1662" height="1301" alt="ses-mb" src="https://github.com/user-attachments/assets/51447f44-0fc4-4b15-9e33-3a40257c5764" />
+<img width="1662" height="1301" alt="ses-mb" src="https://electrostat-lab.github.io/Delta-Engine/ses-mb.svg" />
 
 Two architectural models are being proposed here; a **hierarchial model** representing a hardware abstraction layer using a mathematical/physical abstraction, and a **System-Entity-Structure/Model-Base (SES/MB) model** to model the same system components into several subsytems; those subsystems display some components that may be formally linked with components from other subsystems (e.g., the formal linkage among Math Libraries, Mechanics Libraries, and the VMIO Libraries that enable a chained dispatch from Physics to IO).
 
