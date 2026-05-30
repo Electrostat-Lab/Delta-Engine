@@ -252,7 +252,6 @@ digraph ses {
                 fontcolor="#EF9F27"
                 fontsize=9
                 penwidth=1.2
-                lhead=cluster_physics
             ]
         }
 
@@ -294,7 +293,6 @@ digraph ses {
                 fontcolor="#EF9F27"
                 fontsize=9
                 penwidth=1.2
-                lhead=cluster_physics
             ]
             EN_tc -> ARM     [ 
                 label="« specialize »"
@@ -306,7 +304,6 @@ digraph ses {
                 fontcolor="#EF9F27"
                 fontsize=9
                 penwidth=1.2
-                lhead=cluster_physics 
             ]
             EN_tc -> X86     [ 
                 style=solid
@@ -317,7 +314,6 @@ digraph ses {
                 fontcolor="#EF9F27"
                 fontsize=9
                 penwidth=1.2
-                lhead=cluster_physics
             ]
             EN_tc -> ANDROID [ 
                 style=solid
@@ -342,7 +338,6 @@ digraph ses {
                 fontcolor="#EF9F27"
                 fontsize=9
                 penwidth=1.2
-                lhead=cluster_physics
             ]
             
             EN_math -> EN_vmio [
@@ -355,7 +350,6 @@ digraph ses {
                 fontcolor="#EF9F27"
                 fontsize=9
                 penwidth=1.2
-                lhead=cluster_physics
             ]
             
             EN_tc -> EN_io [
@@ -368,7 +362,6 @@ digraph ses {
                 fontcolor="#EF9F27"
                 fontsize=9
                 penwidth=1.2
-                lhead=cluster_physics
             ]
     }
 }
