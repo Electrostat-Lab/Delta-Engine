@@ -97,7 +97,7 @@ digraph ses {
                 ]
 
                 node [ fillcolor="#085041" color="#5DCAA5" fontcolor="#9FE1CB" fontsize=10 width=0.9 ]
-                MCH  [ label="Mechanics" ]
+                MCH  [ label="Solid Mechanics" ]
                 FLD  [ label="Fluid\nDynamics" ]
                 THM  [ label="Thermo-\ndynamics" ]
                 EM   [ label="Electro-\nmagnetism" ]
