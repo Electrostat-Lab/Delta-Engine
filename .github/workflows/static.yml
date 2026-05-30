@@ -31,9 +31,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Build diagrams
-        run: sudo apt install graphviz && dot -Tpng ./paper/architecture.dot -o architecture.png && \
-              dot -Tpng ./paper/ses.dot -o ses.png
+      - name: Download missing dependencies
+        run: sudo apt install graphviz
+      - name: Building diagrams
+        run: dot -Tpng ./paper/architecture.dot -o architecture.png && dot -Tpng ./paper/ses.dot -o ses.png
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
