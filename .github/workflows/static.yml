@@ -4,7 +4,7 @@ name: Deploy static content to Pages
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: ["master"]
+    branches: ["all"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -34,7 +34,7 @@ jobs:
       - name: Download missing dependencies
         run: sudo apt install graphviz
       - name: Building diagrams
-        run: dot -Tpng ./paper/architecture.dot -o architecture.png && dot -Tpng ./paper/ses.dot -o ses.png
+        run: dot -Tpng ./paper/architecture.dot -o architecture.png && dot -Tpng ./paper/ses-mb.dot -o ses-mb.png
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
