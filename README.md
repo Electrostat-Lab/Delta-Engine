@@ -3,6 +3,8 @@
 A realtime Newtonian-based physics and hardware engine library with an API designed to address problems of simulation and real object dynamics; the idea is to couple building a physics simulator with emulating IO using the same abstraction via polymorphism and encapsulation (e.g., building a human joint simulator on a 3D game engine and deploying it on a hardware stepper motor module to emulate the same motion using electronic components in a different system using the same code).
 
 ## General List of supported features
+<img src="https://electrostat-lab.github.io/Delta-Engine/ses-mb.svg" />
+
 - [ ] N-dimensional Physics Spaces.
 - [ ] CPU-based Realtime monitoring.
 - [ ] Support for Classical Linear Newtonian Mechanics.
