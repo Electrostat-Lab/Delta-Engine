@@ -16,11 +16,14 @@ There are a couple of theoretical and practical knowledge gaps that this softwar
 Delta-Engine is a physics engine that provides a new software architectural paradigm for precisional IO switch and control over embedded systems and robotics without much knowledge in embedded systems, managing states and software engineering paradigms or if they fail to design the system (e.g., Object-oriented programming). It introduces the field of computational physics to the embedded world through providing a virtual machine and a runtime infrastructure based on the Newtonian physics spaces and supporting infrastructure IO libraries for several supported platforms.
 
 ## Methodologies
-- The Abstract architectural design methodologies involve using the **Hardware-Abstraction Layer (HAL)** to model the structure of the engine in a hierarchial form and the **System-Entity-Structure/Model-Base (SES/MB) Framework** to model the structure of the engine in a more detailed form and model the relation among the subsystems and the components of the engine.
-- The Detailed-design methodologies involve using **Entity-Component-System (ECS)** to implement the structure of the physics engine together with the **Automata Theory**; such that, each component of the physics architecture could be represented by a system of component objects, and the system part of the ECS encapsulates state-machines; either deterministic or non-deterministic; with cyclic or non-cyclic runtime.
 - Virtualization of physics objects and IO emulation using mathematical and physical abstractions.
 - Newtonian physics spaces as Runtime Infrastructure (RTI).
-- Implementation of several physics spaces modules (e.g., Kinematics Module - Fluid Mechanics Module).
+- The Abstract architectural design methodologies involve using the **Hardware-Abstraction Layer (HAL)** to model the structure of the engine in a hierarchial form and the **System-Entity-Structure/Model-Base (SES/MB) Framework** to model the structure of the engine in a more detailed form and model the relation among the subsystems and the components of the engine.
+- The Detailed-design methodologies involve using **Entity-Component-System (ECS)** to implement the structure of the physics engine together with the **Automata Theory**; such that, each component of the physics architecture could be represented by a system of component objects, and the system part of the ECS encapsulates state-machines; either deterministic or non-deterministic; with cyclic or non-cyclic runtime.
+- Therefore, the theoretical methodology of the detailed-design is the **Entity-Component-Automata (ECA)**, a formal forge of the ECS and the Automata Theory.
+- Implementation of several physics spaces modules (e.g., Kinematics Module - Fluid Mechanics Module); as systems of the ECA.
+- Building preset physics components and automata that encapsulate the mathematical/physical abstraction.
+- Formal linkage among the automata involved and the hardware drivers layer via callback functions $$\zeta$$; dispatched with each state transition via the transition functions $$\delta$$.
 
 ## High-level Architecture
 <img width="773" height="904" alt="architecture" src="https://github.com/user-attachments/assets/d5700f97-d21c-42fb-9279-818225b125d4" />
@@ -36,7 +39,7 @@ Two architectural models are being proposed here; a **hierarchial model** repres
     * Acceleration Component.
     * Interaction Component.
 * Physics Mechanics: a specialized subsystem of the Newtonian RTI; grouping the different types of objects in the universe that experience inertia, acceleration/deceleration, and interaction with other objects.
-    * Mechanics Module.
+    * Solid Mechanics Module.
     * Fluid Dynamics Module.
     * Thermodynamics Module.
     * Electromagnetism Module.
@@ -75,19 +78,17 @@ Detailed design could be carried out using the **Entity-Component System (ECS) F
 > 5) A component that is attached to the **Mechanics System** through an entity `ID_BALL`.
 > 
 > ## Remarks:
-> * It's not ideal to add a component of the ball object to the **Fluid Dynamics System**; therefore, both the **Mechanics** and the **Fluid Dynamics** are specializations of the **Atomic/Newtonian RTI Subsystem**.
+> * It's not ideal to add a component of the ball object to the **Fluid Dynamics System**; therefore, both the **Solid Mechanics** and the **Fluid Dynamics** are specializations of the **Atomic/Newtonian RTI Subsystem**.
 > * It would be ideal to attach a component of the ball object to the **Fluid Dynamics System**, only if the ball is highly deformable and could be expressed in terms of fluid or semi-fluid properties (e.g., the ball is a "thrombus" in biomedical simulation).
 > * If that ball object is otherwise, a metallic object; it would be ideal to attach a component of it under the **Electromagnetism System**; as it could be electromagnetized under a magnetic field.
-> * A ball object could have { **a standard mechanical component**, **a deformable component**, and **a magnetizable component** } at the same time to enable the different types of simulations accordingly under their respective systems { **Mechanics System**, **Fluid Dynamics System**, and **Electromagnetism System**}, respectively.
+> * A ball object could have { **a standard mechanical component**, **a deformable component**, and **a magnetizable component** } at the same time to enable the different types of simulations accordingly under their respective systems { **Solid Mechanics System**, **Fluid Dynamics System**, and **Electromagnetism System**}, respectively.
 > * The collection of the previous systems represent the core of the Delta-Engine; the **Atomic/Newtonian RTI Subsystem** and its specialization **Physics Mechanics**.
-> * Systems are operated using State-Machines; either deterministic or non-deterministic in nature; cyclic or non-cyclic. 
-
-## Implementation Phases and Milestones
-
-## Integration Phases and Life Applications
+> * Systems are operated using State-Machines; either deterministic or non-deterministic in nature; cyclic or non-cyclic.
+> * The methodology by which the Delta-Engine operates the hardware is via the axiomatic linkage among the layered subsystems of the software, and the pre-compiled platform-agnostic hardware drivers layer.
+> * This axiomatic linkage, described in the former bullet, is performed via a callback $$\zeta$$ function through the machines' transition functions $$\delta$$.
 
 ## References
 - [SES/MB Framework by Throsten Pawletta](https://dl.acm.org/doi/10.5555/3108244.3108245)
 - [The Feynman Lectures Caltech University](https://www.feynmanlectures.caltech.edu/)
-- [Fundamentals of Physics for Scientists and Engineers by Paul Tipler]()
-- [Thomas' Calculus]()
+- [Physics for Scientists and Engineers, 6th Edition](https://www.amazon.com/Physics-Scientists-Engineers-Paul-Tipler/dp/142920124X)
+- [Thomas' Calculus, 15th Edition](https://www.pearson.com/en-us/subject-catalog/p/thomas-calculus/P200000007103/9780137616077)
