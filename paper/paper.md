@@ -66,7 +66,7 @@ Two architectural models are being proposed here; a **hierarchial model** repres
     * x86 Userspace Runtime.
 
 ### Detailed Design:
-Detailed design could be carried out using the **Entity-Component System (ECS) Framework** to model the structure of the engine, and the **Automata Theory** to model the behavior of the engine. Both could be linked via the system part of the ECS; ECS systems can be state machines; either deterministic or non-deterministic; cyclic or non-cyclic in runtime behavior.
+Detailed design could be carried out using the **Entity-Component System (ECS) Framework** to model the structure of the engine, and the **Automata Theory** to model the behavior of the engine. Both could be linked via the system part of the ECS; ECS systems can be state machines with callback functions $$\zeta$$ dispatched after each state-state transition or from the $$\delta$$ transition function; either deterministic or non-deterministic; cyclic or non-cyclic in runtime behavior.
  
 > [!NOTE]
 > ## Example:
