@@ -34,8 +34,8 @@ jobs:
       - name: Download missing dependencies
         run: sudo apt install graphviz
       - name: Building diagrams
-        run: cd ./paper && dot -Tpng ./architecture.dot -o architecture.png 
-              && dot -Tpng ./ses-mb.dot -o ses-mb.png && cd ..
+        run: cd ./paper && dot -Tsvg ./architecture.dot -o architecture.svg
+              && dot -Tsvg ./ses-mb.dot -o ses-mb.svg && cd ..
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
